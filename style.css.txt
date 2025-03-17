@@ -1,0 +1,154 @@
+/* Created by Code Learner */
+
+<style>
+	body {
+		font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		background: linear-gradient(135deg, #228B22, #32CD32);
+		color: #004d00;
+		min-height: 100vh;
+		margin: 0;
+		padding: 20px;
+	}
+
+	.game-container {
+		background: #fffde7;
+		padding: 30px;
+		border-radius: 15px;
+		box-shadow: 0 0 20px rgba(0,100,0,0.2);
+		margin-top: 20px;
+		border: 3px solid #gold;
+		max-width: 600px;
+		width: 90%;
+		text-align: center;
+	}
+
+	h1 {
+		color: #008000;
+		text-shadow: 2px 2px 4px rgba(0,100,0,0.2);
+		font-size: 2.5em;
+		margin-bottom: 15px;
+	}
+
+	h2 {
+		color: #006400;
+		border-bottom: 2px dashed #32CD32;
+		padding-bottom: 10px;
+	}
+
+	input {
+		border: 2px solid #32CD32;
+		border-radius: 5px;
+		padding: 10px;
+		width: 150px;
+		margin: 15px 0;
+		background: #f8fff8;
+	}
+
+	input:focus {
+		outline: none;
+		box-shadow: 0 0 10px #32CD32;
+		background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="%2332CD32" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>');
+		background-repeat: no-repeat;
+		background-position: 95% center;
+		background-size: 20px;
+	}
+
+	button {
+		background: #32CD32;
+		color: white;
+		border: none;
+		padding: 12px 25px;
+		border-radius: 25px;
+		cursor: pointer;
+		font-weight: bold;
+		transition: all 0.3s ease;
+		margin: 10px 5px;
+	}
+
+	button:hover {
+		background: #228B22;
+		transform: scale(1.05);
+		box-shadow: 0 4px 15px rgba(0,100,0,0.3);
+	}
+
+	#message {
+		font-size: 1.2em;
+		padding: 15px;
+		margin: 20px 0;
+		border-radius: 8px;
+		background: #e8f5e9;
+		min-height: 60px;
+	}
+
+	#history {
+		background: #f0fff0;
+		padding: 15px;
+		border-radius: 8px;
+		margin: 20px 0;
+		border: 1px dashed #32CD32;
+	}
+
+	h3 {
+		color: #006400;
+		background: #e8f5e9;
+		padding: 10px;
+		border-radius: 5px;
+		margin: 20px 0 10px;
+		position: relative;
+		padding-left: 40px;
+	}
+
+	h3::before {
+		content: '⭐';
+		position: absolute;
+		left: 10px;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	p {
+		line-height: 1.6;
+		margin: 10px 0;
+		text-align: justify;
+		background: rgba(255,255,255,0.9);
+		padding: 15px;
+		border-radius: 5px;
+	}
+
+	.meteor-shower {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+		z-index: -1;
+	}
+
+	.meteor-shower::after {
+		content: '☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️';
+		position: absolute;
+		animation: fall 10s linear infinite;
+		opacity: 0.5;
+	}
+
+	@keyframes fall {
+		0% { transform: translateY(-100vh) rotate(0deg); }
+		100% { transform: translateY(100vh) rotate(360deg); }
+	}
+
+	@media (max-width: 600px) {
+		.game-container {
+			padding: 15px;
+		}
+		h1 {
+			font-size: 1.8em;
+		}
+		h2 {
+			font-size: 1.3em;
+		}
+	}
+</style>

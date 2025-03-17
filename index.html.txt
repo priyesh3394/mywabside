@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guessing Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1><b>Priyesh Patidar</b></h1>
+        <h2>Guess the Number! Check your Luck!</h2>
+        <p>Priyesh is thinking of a number between 1 and 100... [check for hints]</p>
+        <input type="number" id="guessInput" min="1" max="100" placeholder="Enter No.">
+        <button onclick="checkGuess()">Submit Guess</button>
+        <div id="message"></div>
+        <div id="history"></div>
+        <button onclick="restartGame()" style="margin-top: 20px;">Restart Game</button>
+        <p>May your day be filled with magic and joy on this special occasion! 🎩✨</p>
+    </div>
+    <div class="meteor-shower"></div>
+    <script src="script.js"></script>
+</body>
+</html>

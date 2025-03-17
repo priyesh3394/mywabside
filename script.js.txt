@@ -1,0 +1,59 @@
+let targetNumber;
+let attempts = 0;
+const maxAttempts = 10;
+let guessHistory = [];
+
+function generateNewNumber() {
+    targetNumber = Math.floor(Math.random() * 100) + 1;
+    attempts = 0;
+    guessHistory = [];
+    document.getElementById('message').textContent = '';
+    document.getElementById('history').textContent = '';
+    document.getElementById('guessInput').value = '';
+}
+
+function checkGuess() {
+    const userGuess = parseInt(document.getElementById('guessInput').value);
+    const messageElement = document.getElementById('message');
+    const historyElement = document.getElementById('history');
+
+    if (isNaN(userGuess) || userGuess < 1 || userGuess > 100) {
+        messageElement.textContent = "Please enter a valid number between 1 and 100!";
+        return;
+    }
+
+    attempts++;
+    guessHistory.push(userGuess);
+
+    if (userGuess === targetNumber) {
+        const luckPercentage = 100 - (attempts - 1) * 10;
+        messageElement.innerHTML = `🎉 Correct! You guessed it in ${attempts} ${attempts === 1 ? 'attempt' : 'attempts'}! Luck is with you ${luckPercentage}%!`;
+        messageElement.style.color = 'green';
+        document.getElementById('guessInput').disabled = true;
+    } else if (attempts >= maxAttempts) {
+        messageElement.innerHTML = `Game Over! The number was ${targetNumber}`;
+        messageElement.style.color = 'red';
+        document.getElementById('guessInput').disabled = true;
+    } else {
+        const hint = userGuess < targetNumber ? "Try a higher number!" : "Try a lower number!";
+        messageElement.innerHTML = `${hint}<br>Attempts left: ${maxAttempts - attempts}`;
+        messageElement.style.color = '#333';
+    }
+
+    historyElement.textContent = `Your guesses: ${guessHistory.join(', ')}`;
+}
+
+function restartGame() {
+    generateNewNumber();
+    document.getElementById('guessInput').disabled = false;
+    document.getElementById('message').textContent = '';
+    document.getElementById('history').textContent = '';
+}
+
+generateNewNumber();
+
+document.getElementById('guessInput').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        checkGuess();
+    }
+});
